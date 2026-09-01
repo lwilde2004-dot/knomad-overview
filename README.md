@@ -10,7 +10,7 @@ This repository is the overview. The application source is private.
 
 ## Why
 
-I built [Cortex](https://github.com/lwilde2004-dot/cortex-overview) first, as a private pipeline over my own vault: my machine, my folder layout, one user. Knomad is that idea rebuilt as a product, with the assumptions about my file structure taken out so it works on anyone's material.
+I built [Project Atlas](https://github.com/lwilde2004-dot/project-atlas) first, as a private pipeline over my own vault: my machine, my folder layout, one user. Knomad is that idea rebuilt as a product, with the assumptions about my file structure taken out so it works on anyone's material.
 
 ## What it does
 
