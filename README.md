@@ -29,6 +29,20 @@ Routes are split by concern: `upload`, `process`, `vault`, `folders`, `qa`, `que
 
 **Deployment.** Frontend on Vercel, backend on Railway with a mounted persistent volume.
 
+## Pipeline
+
+```mermaid
+flowchart LR
+    A[Upload<br/>PDF / PPTX / DOCX] --> B[Parse to structured text]
+    B --> C[(SQLite)]
+    C --> D[Wiki article]
+    C --> E[Practice questions]
+    C --> F[Scoped Q&A]
+    D --> G[Editor<br/>TipTap + KaTeX]
+```
+
+Parsing happens once, on upload, and the structured text is what everything downstream works from. PowerPoint is the awkward case: there is no text layer to pull, so the XML is unzipped and walked to recover slide text and ordering. Getting that right is most of what makes the generated article resemble the lecture rather than a bag of bullet points.
+
 ## Trade-offs
 
 **Why I stayed on SQLite.** Reads dominate, the write pattern is one user at a time against their own material, and a file-backed database on a mounted volume removes an entire service from the stack. It caps me at vertical scaling, and I would have to migrate before multi-region. For the load I have now it is fine.
